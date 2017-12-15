@@ -1,10 +1,19 @@
 ---
 
-- name: "NETWORK | CREATE IGW ON VPC {{}}"
-  ec2_vpc_net_facts:
+- name: "NETWORK | CREATE IGW ON VPC {{ vpc_id }}"
+  ec2_vpc_igw:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
     region: "{{ aws_region }}"
-    filters:
-      cidr: "{{ vpc_cidr_block }}"
-  register: vpc
+    vpc_id: "{{ vpc_id }}"
+    resource_tags:
+      CreateBy: ansible_aws
+      ManagedBy: ansible_aws
+      Region: "{{ aws_region }}"
+      Enviroment: "{{ vpc_tags.enviroment }}"
+      VPC: "{{ vpc_id }}"
+  register: igw
+
+- name: "NETWORK | DESCRIPT IGW"
+  debug:
+    msg: "{{ igw }}"
