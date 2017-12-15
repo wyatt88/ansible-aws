@@ -8,7 +8,6 @@
     cidr_block: "{{ vpc_cidr_block }}"
     name: "{{ vpc_tags.vpc_name }}"
     state: present
-    internet_gateway: True
     resource_tags:
       CreateBy: ansible_aws
       ManagedBy: ansible_aws
