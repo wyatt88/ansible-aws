@@ -17,6 +17,7 @@
       SubnetType: "{{ item.type }}"
   with_items: "{{ subnets_conf }}"
   register: subnets
+  when: vpc_id is defined
 
 - name: "NETWORK | DESCRIPT SUBNETS INFO"
   debug:
