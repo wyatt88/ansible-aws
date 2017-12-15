@@ -27,7 +27,7 @@
   tags:
     - search
     - vpc
-  ec2_net_facts:
+  ec2_vpc_net_facts:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
     region: "{{ aws_region }}"
