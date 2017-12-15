@@ -4,3 +4,4 @@
   gather_facts: False
   roles:
     - { role: network/vpc/build_vpc, tags: build-vpc, when: vpc_need_build }
+    - { role: network/igw/create_igw, tags: create-igw }

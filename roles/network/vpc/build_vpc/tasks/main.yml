@@ -14,3 +14,7 @@
       Region: "{{ aws_region }}"
       Enviroment: "{{ vpc_tags.enviroment }}"
   register: vpc
+
+- name: "NETWORK | DESCRIPT VPC"
+  debug:
+    msg: "{{ vpc.results }}"
