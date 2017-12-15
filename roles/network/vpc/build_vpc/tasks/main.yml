@@ -12,7 +12,7 @@
       CreateBy: ansible_aws
       ManagedBy: ansible_aws
       Region: "{{ aws_region }}"
-      Enviroment: "{{ vpc_tags.enviroment }}"
+      Enviroment: "{{ enviroment }}"
   register: vpc
 
 - name: "NETWORK | SET vpc_id FOR WHOLE PLAYBOOK"

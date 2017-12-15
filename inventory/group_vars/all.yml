@@ -4,20 +4,26 @@
 aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
 aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
 aws_region: "{{ lookup('env','REGION') }}"
-ec2_zone: 
+ec2_zone: "{{ aws_region }}a"
 ec2_image: 
 ec2_instance_type: 
 ec2_keypair: 
 ec2_security_group: default
 ec2_instance_count:
 
-# VPC Config
+# VPC Configs
 ## vpc_need_build
 vpc_need_build: True
 vpc_name: "vpc-test"
 vpc_cidr_block: "172.100.0.0/16"
-vpc_tags:
-  enviroment: "vpc-test"
+enviroment: "vpc-test"
+
+## subnets
+subnets_conf:
+  - type: public
+    cidr: "172.100.1.0/24"
+  - type: private
+    cidr: "172.100.2.0/24"
 
 # EC2 Config
 ec2_instances_types: ""

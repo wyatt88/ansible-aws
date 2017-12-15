@@ -10,10 +10,14 @@
       CreateBy: ansible_aws
       ManagedBy: ansible_aws
       Region: "{{ aws_region }}"
-      Enviroment: "{{ vpc_tags.enviroment }}"
+      Enviroment: "{{ enviroment }}"
       VPC: "{{ vpc_id }}"
   register: igw
 
-- name: "NETWORK | DESCRIPT IGW"
-  debug:
-    msg: "{{ igw }}"
+- name: "NETWORK | SET igw_id FOR WHOLE PLAYBOOK"
+  set_fact:
+    igw_id: "{{ igw.gateway_id }}"
+
+# - name: "NETWORK | DESCRIPT IGW"
+#   debug:
+#     msg: "{{ igw }}"

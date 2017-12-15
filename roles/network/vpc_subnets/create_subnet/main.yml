@@ -1,0 +1,26 @@
+---
+
+- name: "NETWORK | CREATE SUBNETS in VPC {{ vpc_id }}"
+  ec2_vpc_subnets:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    vpc_id: "{{ vpc_id }}"
+    state: present
+    cidr: "{{ item.cidr }}"
+    az: "{{ ec2_zone }}"
+    resource_tags:
+      CreateBy: ansible_aws
+      ManagedBy: ansible_aws
+      Region: "{{ aws_region }}"
+      Enviroment: "{{ enviroment }}"
+      SubnetType: "{{ item.type }}"
+  with_times: "{{ subnets_conf }}"
+  register: subnets
+
+- name: "NETWORK | DESCRIPT SUBNETS INFO"
+  debug:
+    msg: "{{ subnets }}"
+
+
+

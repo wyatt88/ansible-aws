@@ -8,3 +8,7 @@
     filters:
       cidr: "{{ vpc_cidr_block }}"
   register: vpc
+
+- name: "NETWORK | SET VPC_ID"
+  set_fact:
+    vpc_id: "{{ vpc.vpcs[0].id }}"
