@@ -1,11 +1,11 @@
 ---
 
-- name: "NETWORK | TERMINATE VPC BY VPC_ID"
+- name: "NETWORK | TERMINATE VPC BY CIDR AND NAME"
   ec2_vpc_net:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
     region: "{{ aws_region }}"
-    name: "{{ vpc_tags.vpc_name }}"
+    name: "{{ vpc_name }}"
     state: absent
     cidr_block: "{{ vpc_cidr_block }}"
   
