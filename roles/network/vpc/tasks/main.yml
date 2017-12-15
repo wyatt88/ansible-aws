@@ -2,8 +2,7 @@
 
 - name: "NETWORK | CREATE VPC {{ vpc_cidr_block }}"
   tags:
-    - bulid
-    - vpc
+    - bulid-vpc
   ec2_vpc:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
@@ -25,8 +24,7 @@
 
 - name: "NETWORK | GET VPC INFO FILETER BY CIDR"
   tags:
-    - search
-    - vpc
+    - search-vpc
   ec2_vpc_net_facts:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
@@ -35,10 +33,13 @@
       cidr: " {{ vpc_cidr_block }}"
   register: vpc
 
+- name: "NETWORK | Describe VPC"
+  debug:
+    msg: "{{ vpc }}"
+
 - name: "NETWORK | DROP VPC BY VPC_ID"
   tags:
-    - terminate
-    - vpc
+    - terminate-vpc
   ec2_vpc:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"

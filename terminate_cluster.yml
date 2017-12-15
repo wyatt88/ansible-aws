@@ -3,4 +3,4 @@
 - hosts: localhost
   gather_facts: False
   roles:
-    - { role: network/vpc,tags: ["search","terminate","vpc"] }
+    - { role: network/vpc,tags: ["search-vpc","terminate-vpc"] }
