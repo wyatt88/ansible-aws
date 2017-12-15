@@ -1,7 +1,7 @@
 ---
 
 - name: "NETWORK | CREATE SUBNETS in VPC {{ vpc_id }}"
-  ec2_vpc_subnets:
+  ec2_vpc_subnet:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
     region: "{{ aws_region }}"
