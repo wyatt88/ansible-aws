@@ -3,7 +3,7 @@
   debug:
     msg: "{{ vpc }}"
 
-- name: "NETWORK | DROP VPC BY VPC_ID"
+- name: "NETWORK | TERMINATE VPC BY VPC_ID"
   ec2_vpc:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
