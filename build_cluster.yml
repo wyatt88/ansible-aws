@@ -5,4 +5,4 @@
   roles:
     - { role: network/vpc/build_vpc, tags: build-vpc, when: vpc_need_build }
     - { role: network/igw/create_igw, tags: create-igw }
-    - { role: network/igw/create_subnet, tags: create-subnet }
+    - { role: network/vpc_subnets/create_subnet, tags: create-subnet }
