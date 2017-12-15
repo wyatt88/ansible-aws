@@ -12,10 +12,12 @@ ec2_security_group: default
 ec2_instance_count:
 
 # VPC Config
-vpc_cidr_block: ""
+## vpc_need_build
+vpc_need_build: True
+vpc_cidr_block: "172.100.0.0/16"
 vpc_tags:
-  vpc_name: ""
-  enviroment: ""
+  vpc_name: "vpc-test"
+  enviroment: "vpc-test"
 
 # EC2 Config
-tikv_instances_types: ""
+ec2_instances_types: ""
