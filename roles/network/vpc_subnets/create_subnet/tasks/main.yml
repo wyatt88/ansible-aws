@@ -15,7 +15,7 @@
       Region: "{{ aws_region }}"
       Enviroment: "{{ enviroment }}"
       SubnetType: "{{ item.type }}"
-  with_times: "{{ subnets_conf }}"
+  with_items: "{{ subnets_conf }}"
   register: subnets
 
 - name: "NETWORK | DESCRIPT SUBNETS INFO"
