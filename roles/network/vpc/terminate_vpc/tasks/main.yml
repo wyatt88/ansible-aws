@@ -1,7 +1,4 @@
 ---
-- name: "NETWORK | Describe VPC"
-  debug:
-    msg: "{{ vpc }}"
 
 - name: "NETWORK | TERMINATE VPC BY VPC_ID"
   ec2_vpc_net:
@@ -9,5 +6,5 @@
     aws_secret_key: "{{ aws_secret_key }}"
     region: "{{ aws_region }}"
     state: absent
-    vpc_id: "{{ vpc.vpcs[0].id }}"
+    cidr_block: "{{ vpc_cidr_block }}"
   

@@ -1,6 +1,0 @@
----
-dependencies:
-
-  - role: network/vpc/search_vpc
-    tags:
-      - search-vpc
