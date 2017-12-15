@@ -1,5 +1,6 @@
 ---
 dependencies:
+
   - role: network/vpc/build_vpc
     tags:
       - build-vpc

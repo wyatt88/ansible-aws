@@ -3,4 +3,4 @@
 - hosts: localhost
   gather_facts: False
   roles:
-    - { role: network/vpc,tags: bulid-vpc,when: vpc_need_build }
+    - { role: network/vpc/build_vpc,tags: build-vpc,when: vpc_need_build }
