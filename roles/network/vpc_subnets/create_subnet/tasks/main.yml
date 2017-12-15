@@ -10,6 +10,7 @@
     cidr: "{{ item.cidr }}"
     az: "{{ ec2_zone }}"
     resource_tags:
+      Name: "{{ vpc_name }}_{{ item.type }}"
       CreateBy: ansible_aws
       ManagedBy: ansible_aws
       Region: "{{ aws_region }}"
