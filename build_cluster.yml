@@ -3,4 +3,4 @@
 - hosts: localhost
   gather_facts: False
   roles:
-    - { role: network,tags: ["localhost","vpc"]}
+    - { role: network/vpc,tags: ["localhost","vpc"]}
