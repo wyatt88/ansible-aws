@@ -1,0 +1,13 @@
+---
+dependencies:
+  - role: kubernetes-apps/build_vpc
+    tags:
+      - build-vpc
+
+  - role: kubernetes-apps/search_vpc
+    tags:
+      - search-vpc
+
+  - role: kubernetes-apps/terminate_vpc
+    tags:
+      - terminate-vpc
