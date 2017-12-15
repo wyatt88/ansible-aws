@@ -1,0 +1,13 @@
+---
+- name: "NETWORK | Describe VPC"
+  debug:
+    msg: "{{ vpc }}"
+
+- name: "NETWORK | DROP VPC BY VPC_ID"
+  ec2_vpc:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    state: absent
+    vpc_id: "{{ vpc.vpc_id }}"
+  
