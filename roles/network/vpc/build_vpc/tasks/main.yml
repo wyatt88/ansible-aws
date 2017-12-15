@@ -15,6 +15,10 @@
       Enviroment: "{{ vpc_tags.enviroment }}"
   register: vpc
 
-- name: "NETWORK | DESCRIPT VPC"
-  debug:
-    msg: "{{ vpc.results }}"
+- name: "NETWORK | SET vpc_id FOR WHOLE PLAYBOOK"
+  set_facts:
+    vpc_id: {{ vpc.vpc.id }}
+
+# - name: "NETWORK | DESCRIPT VPC"
+#   debug:
+#     msg: "{{ vpc }}"
