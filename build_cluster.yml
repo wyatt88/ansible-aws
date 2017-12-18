@@ -6,5 +6,7 @@
     - { role: network/vpc/build_vpc, tags: build-vpc, when: vpc_need_build }
     - { role: network/igw/create_igw, tags: create-igw }
     - { role: network/vpc_subnets/create_subnet, tags: create-subnet }
-    - { role: network/nat_gateway/create_nat_gw, tags: create-nat-gateway}
-    - { role: network/route_table/create_route_table, tags: create-route-table}
+    - { role: network/nat_gateway/create_nat_gw, tags: create-nat-gateway }
+    - { role: network/route_table/create_route_table, tags: create-route-table }
+    - { role: services/ec2/launch_bastion_instance, tags: create-bastion-ec2 }
+    
