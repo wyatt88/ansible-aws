@@ -8,6 +8,7 @@
     state: present
     subnet_id: "{{ private_subnetid }}"
     wait: yes
+    if_exist_do_not_create: yes
   register: new_nat_gateway
 
 - name: "NETWORK | DEBUG NAT"
