@@ -22,7 +22,11 @@
 
 - name: "NETWORK | DESCRIPT SUBNETS INFO"
   debug:
-    msg: "{{ subnets }}"
+    msg: "{{ subnets.results }}"
+
+# - name: "NETWORK | SET SUBNETS"
+#   set_fact:
+
 
 
 
