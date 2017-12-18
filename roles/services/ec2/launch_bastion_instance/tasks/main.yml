@@ -4,7 +4,9 @@
   ec2_group:
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
-    region: "{{ aws_region }}" 
+    region: "{{ aws_region }}"
+    name: ssh_public
+    description: a ssh EC2 group
     rules:
       - proto: tcp
         ports: 22
