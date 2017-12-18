@@ -11,11 +11,11 @@
       - proto: tcp
         ports: 22
         cidr_ip: 0.0.0.0/0 
-  register: ssh_sg
+  register: ssh_security_group
 
 - name: "EC2 | DEBUG BASTION SECURITY GROUP"
   debug:
-    msg "{{ ssh_sg }}"
+    msg "{{ ssh_security_group }}"
 
 # - name: "EC2 | LAUNCH A BASTION EC2"
 #   ec2:
