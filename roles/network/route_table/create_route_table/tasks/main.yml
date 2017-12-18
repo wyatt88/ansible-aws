@@ -27,7 +27,7 @@
       - "{{ private_subnetid }}"
     routes:
       - dest: 0.0.0.0/0
-        instance_id: "{{ nat_gw_id }}"
+        gateway_id: "{{ nat_gw_id }}"
   register: private_route_table
 
 - name: "NETWORK | DEBUG"
