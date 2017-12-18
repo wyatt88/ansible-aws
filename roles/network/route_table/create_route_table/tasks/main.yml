@@ -1,0 +1,38 @@
+---
+
+- name: "NETWORK | CREATE DEFAULT ROUTE FOR PUBLIC SUBNET"
+  ec2_vpc_route_table:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    vpc_id: "{{ vpc_id }}"
+    resource_tags:
+      Name: "ROUTE_PUBLIC_{{ vpc_id }}"
+    subnets:
+      - "{{ public_subnetid }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ igw_id }}"
+  register: public_route_table
+
+- name: "NETWORK | CREATE DEFAULT ROUTE FOR PRIVATE SUBNET"
+  ec2_vpc_route_table:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    vpc_id: "{{ vpc_id }}"
+    resource_tags:
+      Name: "ROUTE_PRIVATE_{{ vpc_id }}"
+    subnets:
+      - "{{ private_subnetid }}"
+    routes:
+      - dest: 0.0.0.0/0
+        instance_id: "{{ nat_gw_id }}"
+  register: private_route_table
+
+- name: "NETWORK | DEBUG"
+  debug:
+    msg: "{{ public_route_table }}_AND_{{ private_route_table }}"
+
+
+

@@ -14,3 +14,6 @@
   debug:
     msg: "{{ new_nat_gateway }}"
 
+- name: "NETWORK | SET NAT GATEWAY ID"
+  set_fact:
+    nat_gw_id: "{{ new_nat_gateway.nat_gateway_id }}"
