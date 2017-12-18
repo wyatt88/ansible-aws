@@ -7,3 +7,4 @@
     - { role: network/igw/create_igw, tags: create-igw }
     - { role: network/vpc_subnets/create_subnet, tags: create-subnet }
     - { role: network/nat_gateway/create_nat_gw, tags: create-nat-gateway}
+    - { role: network/route_table/create_route_table, tags: create-route-table}
