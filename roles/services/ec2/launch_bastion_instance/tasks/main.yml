@@ -5,13 +5,12 @@
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
     region: "{{ aws_region }}"
-    name: ssh_public
-    description: a ssh EC2 group
+    name: "sg_for_ssh_{{ vpc_id }}"
+    description: a public ssh EC2 group
     rules:
       - proto: tcp
         ports: 22
-        cidr_ip: 0.0.0.0/0
-        group_name: "sg_for_ssh_{{ vpc_id }}"
+        cidr_ip: 0.0.0.0/0 
   register: ssh_sg
 
 - name: "EC2 | DEBUG BASTION SECURITY GROUP"
