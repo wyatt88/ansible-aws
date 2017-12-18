@@ -30,9 +30,9 @@
         gateway_id: "{{ nat_gw_id }}"
   register: private_route_table
 
-- name: "NETWORK | DEBUG"
-  debug:
-    msg: "{{ public_route_table }}_AND_{{ private_route_table }}"
+# - name: "NETWORK | DEBUG"
+#   debug:
+#     msg: "{{ public_route_table }}_AND_{{ private_route_table }}"
 
 
 

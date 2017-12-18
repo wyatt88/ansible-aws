@@ -7,6 +7,9 @@
     region: "{{ aws_region }}"
     name: "sg_for_ssh_{{ vpc_id }}"
     description: a public ssh EC2 group
+    state: present
+    tags:
+      Name: "sg_for_ssh_{{ vpc_id }}"
     rules:
       - proto: tcp
         ports: 22
