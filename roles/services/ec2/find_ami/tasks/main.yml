@@ -1,0 +1,16 @@
+---
+
+- name: "EC2 | GET AMI INFO IN {{ aws_region }}"
+  ec2_ami_find:
+    owner: "137112412989"
+    region: "{{ aws_region }}"
+    platform: "Amazon Linux"
+    virtualization_type: hvm
+    sort: creationDate
+    sort_order: descending
+    no_result_action: fail
+  register: ami_info
+
+- name: "EC2 | SET LATEST AMAZON LINUX AMI ID IN {{ aws_region }}"
+  set_fact:
+    ami_id: "{{ ami_info.results[0].ami_id }}"

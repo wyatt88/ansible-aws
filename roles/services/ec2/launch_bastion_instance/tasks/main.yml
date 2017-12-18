@@ -16,13 +16,44 @@
         cidr_ip: 0.0.0.0/0 
   register: ssh_security_group
 
-- name: "EC2 | DEBUG BASTION SECURITY GROUP"
-  debug:
-    msg: "{{ ssh_security_group }}"
+# - name: "EC2 | DEBUG BASTION SECURITY GROUP"
+#   debug:
+#     msg: "{{ ssh_security_group }}"
 
-# - name: "EC2 | LAUNCH A BASTION EC2"
-#   ec2:
-#     aws_access_key: "{{ aws_access_key }}"
-#     aws_secret_key: "{{ aws_secret_key }}"
-#     region: "{{ aws_region }}"
+- name: "EC2 | SET PUBLIC SSH SECURITY GROUP"
+  set_fact:
+    ssh_security_group_id: "{{ ssh_security_group.group_id }}"
+
+- name: "AWS | Generate SSH KeyPair"
+  include: generate_keypair.yml
+
+- name: "AWS | Import SSH Plubic Key to AWS"
+  ec2_key:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    name: "pingcap_{{ vpc_id }}"
+    key_material: "{{ item }}"
+    state: present
+  with_file: ~/.ssh/aws.id_rsa.pub
+
+- name: "EC2 | LAUNCH A BASTION EC2"
+  ec2:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    assign_public_ip: yes
+    exact_count: 1
+    group_id: "{{ ssh_security_group_id }}"
+    instance_type: t2.nano
+    vpc_subnet_id: "{{ private_subnetid }}"
+    key_name: "pingcap_{{ vpc_id }}"
+    instance_tags:
+      CreateBy: ansible_aws
+      ManagedBy: ansible_aws
+      Region: "{{ aws_region }}"
+      Enviroment: "{{ enviroment }}"
+      Role: bastion
+    image: "{{ ami_id }}"
+
 
