@@ -20,12 +20,17 @@
   register: subnets
   when: vpc_id is defined
 
-- name: "NETWORK | DESCRIPT SUBNETS INFO"
-  debug:
-    msg: "{{ subnets.results }}"
+# - name: "NETWORK | DESCRIPT SUBNETS INFO"
+#   debug:
+#     msg: "{{ subnets.results }}"
 
-# - name: "NETWORK | SET SUBNETS"
-#   set_fact:
+- name: "NETWORK | SET PUBLIC SUBNET ID"
+  set_fact:
+    public_subnetid: "{{ subnets.results[0].subnet.id }}"
+
+- name: "NETWORK | SET PRIVATE SUBNET ID"
+  set_fact:
+    private_subnetid: "{{ subnets.results[1].subnet.id }}"
 
 
 

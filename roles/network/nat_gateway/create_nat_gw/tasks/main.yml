@@ -1,0 +1,16 @@
+---
+
+- name: "NETWORK | CREATE NAT GATEWAY FOR {{ vpc_id }}"
+  ec2_vpc_nat_gateway:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ aws_region }}"
+    state: present
+    subnet_id: "{{ private_subnetid }}"
+    wait: yes
+  register: new_nat_gateway
+
+- name: "NETWORK | DEBUG NAT"
+  debug:
+    msg: "{{ new_nat_gateway }}"
+
